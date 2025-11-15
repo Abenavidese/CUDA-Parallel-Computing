@@ -63,3 +63,36 @@ def pedir_tamano_mascara():
             return n
         except ValueError:
             print("Error: debes ingresar un número entero válido.")
+
+def main():
+    try:
+        imagen = Image.open(RUTA_IMAGEN).convert("L")
+    except Exception as e:
+        print("No se pudo abrir la imagen en la ruta:", RUTA_IMAGEN)
+        print("Detalle del error:", e)
+        return
+
+    imagen_np = np.array(imagen, dtype=float)
+    alto, ancho = imagen_np.shape
+
+    tamano = pedir_tamano_mascara()
+    kernel = generar_kernel_gaussiano(tamano)
+
+    resultado, tiempo, memoria_pico = convolucion_gaussiana(imagen_np, kernel)
+
+    resultado = np.clip(resultado, 0, 255).astype(np.uint8)
+    imagen_salida = Image.fromarray(resultado)
+    nombre_salida = f"filtro_oceano_{tamano}x{tamano}.png"
+    imagen_salida.save(nombre_salida)
+
+    print("--------- RESULTADOS ---------")
+    print("Tamaño final de la máscara:", tamano, "x", tamano)
+    print("Dimensiones de la imagen de entrada:", ancho, "x", alto)
+    print("Tiempo de convolución (segundos):", tiempo)
+    print("Memoria pico usada durante la convolución:")
+    print("   ", memoria_pico, "bytes")
+    print("   ", memoria_pico / (1024 * 1024), "MB")
+    print("Imagen filtrada guardada como:", nombre_salida)
+
+if __name__ == "__main__":
+    main()
