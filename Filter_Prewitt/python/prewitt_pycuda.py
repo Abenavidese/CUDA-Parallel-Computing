@@ -199,8 +199,8 @@ def main():
     parser.add_argument("--input",  type=str, default=DEFAULT_INPUT)
     parser.add_argument("--output", type=str, default=DEFAULT_OUTPUT)
     parser.add_argument("--gain",   type=float, default=8.0)
-    parser.add_argument("--blockX", type=int, default=32)
-    parser.add_argument("--blockY", type=int, default=16)
+    parser.add_argument("--blockX", type=int, default=5)
+    parser.add_argument("--blockY", type=int, default=5)
     parser.add_argument("--preblur", type=int, default=1)
     args = parser.parse_args()
 

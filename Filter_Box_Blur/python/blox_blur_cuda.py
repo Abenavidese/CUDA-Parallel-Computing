@@ -121,7 +121,7 @@ def main():
     parser.add_argument("--input",  type=str, default=DEFAULT_INPUT,  help="Ruta de la imagen de entrada")
     parser.add_argument("--output", type=str, default=DEFAULT_OUTPUT, help="Ruta de la imagen de salida")
     parser.add_argument("--blockX", type=int, default=32, help="Tamaño del bloque en X")
-    parser.add_argument("--blockY", type=int, default=32, help="Tamaño del bloque en Y")
+    parser.add_argument("--blockY", type=int, default=16, help="Tamaño del bloque en Y")
     args = parser.parse_args()
 
     # -------------------------------------------------------------------------

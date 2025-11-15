@@ -9,8 +9,8 @@ from pycuda.compiler import DynamicSourceModule
 # ============================================================================
 # Default image paths (adjust if you want)
 # ============================================================================
-DEFAULT_INPUT  = r"C:\Users\EleXc\Desktop\part-w\CUDA-Parallel-Computing\FiltroLaplaciano\tajmahal6000.jpg"
-DEFAULT_OUTPUT = r"C:\Users\EleXc\Desktop\part-w\CUDA-Parallel-Computing\FiltroLaplaciano\tajmahal6000.jpg_out_pycuda.png"
+DEFAULT_INPUT  = r"C:\Users\EleXc\Desktop\part-w\CUDA-Parallel-Computing\FiltroLaplaciano\bird_9000x9000.jpg"
+DEFAULT_OUTPUT = r"C:\Users\EleXc\Desktop\part-w\CUDA-Parallel-Computing\FiltroLaplaciano\bird_65x65.png"
 
 # ============================================================================
 # CUDA kernel source:
@@ -182,8 +182,8 @@ def main():
     parser = argparse.ArgumentParser("Laplacian / LoG filter in PyCUDA")
     parser.add_argument("--input",  type=str, default=DEFAULT_INPUT)
     parser.add_argument("--output", type=str, default=DEFAULT_OUTPUT)
-    parser.add_argument("--blockX", type=int, default=32)
-    parser.add_argument("--blockY", type=int, default=16)
+    parser.add_argument("--blockX", type=int, default=5)
+    parser.add_argument("--blockY", type=int, default=5)
     args = parser.parse_args()
 
     # ------------------------------------------------------------------------
